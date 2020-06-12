@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+        "@src/*": ["./src/*"],
+        "@controllers/*": ["./src/controllers/*"],
+        "@models/*": ["./src/models/*"],
+        "@utils/*": ["./src/utils/*"],
+        "@commons/*": ["./src/commons/*"]
+      }
+    }
+  }
+
+  // thêm ở package.json nữa nhé
