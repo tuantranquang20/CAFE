@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const userControllers = require("../controllers/userControllers");
-// const userModels = require('./../models/userModels')
-// const authController = require("./../controllers/authControllers");
+const userModels = require('./../models/userModels')
+const authController = require("./../controllers/authControllers");
 router.post("/login", authController.login);
 router.post("/forgotPassword", authController.forgotPassword);
 router.patch("/resetPassword/:token", authController.resetPassword);
