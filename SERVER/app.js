@@ -5,10 +5,10 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require("body-parser");
 const logger = require('morgan');
 
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+const indexRouter = require("./src/routes/index");
+const usersRouter = require('./src/routes/users');
 
-require("./src/config/db");
+require("./src/configs/db");
 
 const app = express();
 
