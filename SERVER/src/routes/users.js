@@ -16,8 +16,9 @@ router
   ); //userControllers.getMe,  userControllers.updateUser
 router.post("/", userControllers.createUser);
 //tạo middle ware check role
-router.use(authController.protected, authController.checkRole);
-router.route("/").get(authController.protected, userControllers.getAllUsers);
+// router.use(authController.protected, authController.checkRole);
+router.route("/").get(userControllers.getAllUsers);
+//authController.protected, 
 router
   .route("/:id")
   .post(userControllers.findUser)

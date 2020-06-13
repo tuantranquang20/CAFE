@@ -9,13 +9,14 @@ module.exports = {
       // data: {}
     };
   },
-  success: function (data, message = message || "Thành công") {
+  success: function (data, message, ) {
     return {
       status: 1,
       code: 1,
+      // token,
       result: data.length,
-      msg: message,
-      data: data,
+      msg: message ||  "Thành công",
+      data: data
     };
-  },
+  }
 };

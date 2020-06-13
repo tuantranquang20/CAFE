@@ -10,14 +10,14 @@ exports.getAllUsers = async (req, res, next) => {
     const result = await User.find();
     res.json({
       status: 1,
-      message: R.success,
+      message: "Thành công",
       data: result,
     });
   } catch (error) {
     console.log(error, "lỗi rồi b");
     res.json({
       status: 0,
-      message: R.failGetUser,
+      message: "Thất bại",
     });
   }
 };
@@ -26,13 +26,14 @@ exports.createUser = async (req, res, next) => {
     const result = await User.create(req.body);
     res.json({
       status: 1,
-      message: R.success,
+      message: "Thành công!",
       data: result,
     });
   } catch (error) {
+    console.log(error);
     res.json({
       status: 0,
-      message: R.failCreateUser,
+      message: "Thất bại khi tạo user!",
       error: error,
     });
   }

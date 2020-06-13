@@ -1,0 +1,177 @@
+[
+    {
+        "idProduct" : "TS-VTT",
+        "name" : "TRÀ SỮA THÁI",
+        "price" : 30000,
+        "description" : "Cốt trà được nấu và ủ từ lá Trà xanh tươi ướp hương hòa Nhài thơm ngát đến nhiệt độ thích hợp. Nhờ đó, trà giữ được vị thơm mà không chát, ngọt nhẹ nơi cuống họng, mùi trà xanh, hoa nhài thoang thoảng lên mũi thật khó quên.",
+        "idBranch" : "DK"
+    },
+    {
+        "idProduct" : "TS-VHT",
+        "name" : "HỒNG TRÀ",
+        "price" : 35000,
+        "description" : "Lớp Cheese trắng béo ngậy thật bắt mắt khi được phủ lên lớp Hồng trà nâu đậm, một ly Hồng trà sữa mát lạnh là cách giải nhiệt trên cả tuyệt vời",
+        "idBranch" : "DK"
+    },
+    {
+        "idProduct" : "TS-VOL",
+        "name" : "TRÀ OLONG ",
+        "price" : 30000,
+        "description" : "Cũng được nấu từ Trà tươi đến 95 độ C thì đưa vào Ủ, những ai thích vị thanh mát ắt không thể bỏ qua Trà Ô Long này.",
+        "idBranch" : "DK"
+    },
+    {
+        "idProduct" : "TS-VBT",
+        "name" : " TRÀ BÁ TƯỚC",
+        "price" : 35000,
+        "description" : "Với một chút đắng, thơm nhẹ và còn thoảng hương tinh dầu kết hợp với vị kem cheese ngọt ngọt, ngậy ngậy đã khiến Trà Bá tước Royal Kem Cheese đánh cắp trái tim của bao cô gái",
+        "idBranch" : "DK"
+    },
+    {
+        "idProduct" : "TS-VTOLBD",
+        "name" : "TRÀ Ô LONG BẠCH ĐÀO",
+        "price" : 20000,
+        "description" : "Được pha chế từ túi trà đặc biệt và điều chỉnh hương vị riêng theo kỹ thuật, trà Ô Long Bạch đào khi kết hợp với kem Cheese sánh mịn thật sự là một cặp đôi ngon bá cháy.",
+        "idBranch" : "DK"
+    },
+    {
+        "idProduct" : "TS-VTSTC",
+        "name" : "TRÀ SỮA TRÂN CHÂU",
+        "price" : 30000,
+        "description" : "Thức uống là sự kết hợp hoàn hảo của vị chát nhẹ, thơm mát của trà quyện với bột ngậy và sữa đặc. Nếu ai yêu thích hương vị ngọt ngào thì không thể bỏ lỡ món trà sữa trân châu truyền thống này nhé.",
+        "idBranch" : "DK"
+    },
+    {
+        "idProduct" : "TS-VTSDD",
+        "name" : "TRÀ SỮA ĐẬU ĐỎ",
+        "price" : 30000,
+        "description" : "Từng hạt đậu đỏ tươi được chế biến công phu, thơm mùi đậu, vị bùi bùi kết hợp với hương vị trà nổi tiếng của Nhật chiều lòng được cả những vị khách khó tính nhất.",
+        "idBranch" : "DK"
+    },
+    {
+        "idProduct" : "TS-VTSKC",
+        "name" : "TRÀ SỮA KEM CHEESE",
+        "price" : 30000,
+        "description" : "Vị trà đặc trưng hòa quyện cùng vị sữa béo béo theo công thức đặc chế, thơm ngon tới giọt cuối cùng. Không những thế, lớp kem Cheese đặc mặn ngọt phủ trên cùng làm cho cái vị béo ngậy, thơm mát được hòa quyện vào với nhau, khiến bạn ngây ngất mãi không thôi.",
+        "idBranch" : "DK"
+    },
+    {
+        "idProduct" : "TS-VTSCTKT",
+        "name" : "TRÀ SỮA CHÂN TRÂU KEM TRỨNG",
+        "price" : 40000,
+        "description" : "Mềm béo, mát lạnh, vị thơm nhẹ, đã thế lại có lớp kem trứng hấp dẫn phủ quanh cốc, topping trân châu khiến món Trà sữa chân trâu kem trứng trở nên mới mẻ và nhanh chóng được khách hàng “hâm mộ”.",
+        "idBranch" : "DK"
+    },
+    {
+        "idProduct" : "TS-VTSCTOKT",
+        "name" : "TRÀ SỮA CHÂN TRÂU OREO KEM TRỨNG",
+        "price" : 40000,
+        "description" : "Độc đáo và kết tinh “sức mạnh” hơn cả chính là Trà sữa chân trâu Oreo kem trứng. Bởi ngoài hương vị đậm đà, thơm béo hấp dẫn, người uống còn được mãn nhãn với lớp Trân trâu ở đáy cốc, lớp kem trứng phủ quanh viền cốc, lớp kem Cheese trắng nõn tầng trên và cuối cùng là lớp bột Oreo tuyệt hảo. Có dai giòn, có béo ngậy, có thơm mát. Quá tuyệt vời cho một siêu phẩm đốn tim bất kỳ ai.",
+        "idBranch" : "DK"
+    },
+    {     
+        "idProduct" : "TS-VTXCN",
+        "name" : "TRÀ XANH CAM NHÀI",
+        "price" : 30000,
+        "description" : "Da thêm đẹp, dáng thêm xinh quả không sai khi uống thức trà này. Những tép cam tươi được giữ nguyên ép ra nước cùng một lát chanh vàng và mứt hoa nhài là sự lựa chọn tối ưu để thanh nhiệt ngày hè.",
+        "idBranch" : "DK"
+    },
+    {     
+        "idProduct" : "TS-VTXDMHK",
+        "name" : "TRÀ XANH DƯA MẬT HOÀNG KIM",
+        "price" : 40000,
+        "description" : "Với sự kết hợp giữa trà, thạch và dưa vàng tươi đã đem đến những ly trà thơm lừng, hấp dẫn đến kỳ lạ.",
+        "idBranch" : "DK"
+    },
+    {     
+        "idProduct" : "TS-VTXCT",
+        "name" : "TRÀ XANH CHANH TUYẾT",
+        "price" : 40000,
+        "description" : "Nếu một ly cà phê mang đến sự tỉnh táo và sáng tạo thì Trà xanh chanh tuyết là sự thoải mái, đã khát với những ngày hè nóng bức, tạo cảm giác hưng phấn để làm việc và vui chơi.",
+        "idBranch" : "DK"
+    },
+    {     
+        "idProduct" : "TS-VTCQ",
+        "name" : "TRÀ CHANH QUẤT",
+        "price" : 30000,
+        "description" : "Chanh không hạt được gọt bỏ vỏ xanh để loại bỏ tinh dầu đắng, dằm lấy nước và thêm chút mật ong, một ly trà làm nhẹ dịu đi một ngày mệt mỏi, nóng bức mùa hè.",
+        "idBranch" : "DK"
+    },
+    {     
+        "idProduct" : "TS-VLTXKC",
+        "name" : "LỤC TRÀ XOÀI KEM CHEESE",
+        "price" : 40000,
+        "description" : "Gần giống như sinh tố xoài nhưng lại mang dư vị trà thơm ngát, cùng hương hoa nhài thoang thoảng, Lục trà xoài kem Cheese là ưu tiên số 1 của không ít các cô nàng mùa hạ.",
+        "idBranch" : "DK"
+    },
+    {     
+        "idProduct" : "TS-VLTDTKC",
+        "name" : "LỤC TRÀ DÂU TÂY KEM CHEESE",
+        "price" : 40000,
+        "description" : "Tỷ lệ cũng tương tự như Lục trà xoài nhưng lại có thêm hương vị dâu chua ngọt, béo ngậy của kem cheese tạo cảm giác “viên mãn”, hương vị đọng tròng trong khoang miệng.",
+        "idBranch" : "DK"
+    },
+    {     
+        "idProduct" : "TS-VLTTLKC",
+        "name" : "LỤC TRÀ THANH LONG KEM CHEESE",
+        "price" : 30000,
+        "description" : "Được phong là “Siêu phẩm mùa hè”, chính sự giàu có về hương vị Thanh Long nhưng lại rất mượt mà của Lục trà mà nó trở thành hương vị không bao giờ quên với thực khách.",
+        "idBranch" : "DK"
+    },
+    {     
+        "idProduct" : "TS-VLTNKC",
+        "name" : "LỤC TRÀ NHO KEM CHEESE",
+        "price" : 25000,
+        "description" : "Nho khá phổ biến nhưng kết hợp cùng trà và kem Cheese béo ngậy thì lại tạo cảm giác “vừa lạ vừa quen”, chỉ cần nếm một miếng, là có thể cảm nhận sự tinh tế dài lâu.",
+        "idBranch" : "DK"
+    },
+    {     
+        "idProduct" : "TS-VTKMLMN",
+        "name" : "TRÀ KHOAI MÔN LÚA MẠCH NÓNG",
+        "price" : 30000,
+        "description" : "Ly trà sữa này sở hữu màu tím nhẹ rất dịu mắt, mùi thì cực kì thơm, hương vị béo ngọt xen lẫn chút trà đắng nhẹ, bùi bùi của khoai môn, sền sệt của lúa mạch, tất cả được kết hợp khéo kéo với nhau tạo nên một hương vị béo ngậy không thể chối từ.",
+        "idBranch" : "DK"
+    },
+    {     
+        "idProduct" : "TS-VTGN",
+        "name" : "TRÀ GỪNG NÓNG",
+        "price" : 20000,
+        "description" : "Được mệnh danh là siêu phẩm cho mùa Đông, Trà Gừng nóng còn có công dụng tuyệt vời cho sức khỏe như chống tụt huyết áp, giảm ho, chống cảm lạnh,...Do đó, thưởng thức một ly Trà gừng thơm lừng là cách đơn giản để cơ thể nhanh chóng cảm thấy ấm lên và sảng khoái.",
+        "idBranch" : "DK"
+    },
+    {     
+        "idProduct" : "TS-VTGSN",
+        "name" : "TRÀ GỪNG SỮA NÓNG",
+        "price" : 25000,
+        "description" : "Đặc biệt, Trà sữa gừng nóng có mùi thơm lừng như Trà Gừng, nhưng có thêm vị sữa béo ngậy, càng hấp dẫn hơn với các fan cuồng kem sữa của Royaltea Việt Nam.",
+        "idBranch" : "DK"
+    },
+    {     
+        "idProduct" : "TS-VTBTSN",
+        "name" : "TRÀ BÁ TƯỚC SỮA NÓNG",
+        "price" : 30000,
+        "description" : "Thoang thoảng hương hoa hồng Anh Quốc, Trà bá tước đậm vị được pha nóng và thêm sữa nóng. Mùi hoa hồng đan xen với vị ngọt ngậy của sữa đem lại một hương vị đốn ngã biết bao trái tim của các cô gái.",
+        "idBranch" : "DK"
+    },
+    {     
+        "idProduct" : "TS-VTHQDBN",
+        "name" : "TRÀ HOA QUẢ ĐẶC BIỆT NÓNG",
+        "price" : 25000,
+        "description" : "Vốn sở hữu thế mạnh về trà hoa quả, Royaltea Việt Nam không ngần ngại ra mắt món trà tuyệt vời này với thành phần độc đáo: Trà Bạch đào + cam, chanh vàng (dằm múi để nguyên xơ) cùng một lát chanh xanh. Đặc biệt, lát chanh xanh được để nguyên để giữ được tinh dầu thơm từ vỏ chanh.",
+        "idBranch" : "DK"
+    },
+    {     
+        "idProduct" : "TS-VTXCNDB",
+        "name" : "TRÀ XANH CAM NÓNG ĐẶC BIỆT",
+        "price" : 20000,
+        "description" : " Sẽ rất khó quên nếu một lần thưởng thức bạn loại trà này trong tiết trời giá lạnh.",
+        "idBranch" : "DK"
+    },
+    {     
+        "idProduct" : "TS-VTKPSN",
+        "name" : "TRÀ KIM PHƯỢNG SỮA NÓNG",
+        "price" : 25000,
+        "description" : "Một sự lựa chọn khác cho các tín đồ của sữa, chỉ một hớp trà Kim Phượng, cả hương vị nồng ấm sẽ lan tỏa trong khoang miệng cũng như toàn cơ thể bạn, xua đi cái lạnh buột tái tê. Bạn sẽ cảm nhận được hương vị ngọt ngào của trà sữa, cái dai dai của chân trâu, lúc đó tâm hồn ta sẽ cảm thấy thư thái hơn.",
+        "idBranch" : "DK"
+    }
+]

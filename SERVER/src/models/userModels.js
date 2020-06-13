@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ["admin", "guide", "user"],
+    enum: ["admin", "user"],
     default: "user",
   },
   password: {
@@ -52,8 +52,8 @@ userSchema.pre("save", function (next) {
   next();
 });
 userSchema.methods.changePassAfter = function (JWTTimestamp) {
-  console.log(JWTTimestamp, "vcl b");
-  console.log(      this.passwordChangedAt.getTime() / 1000, "get nó ra b");
+  // console.log(JWTTimestamp, "vcl b");
+  // console.log(this.passwordChangedAt.getTime() / 1000, "get nó ra b");
   if (this.passwordChangedAt) {
     //nếu mà đã thay đổi thì
     const changeTimestamp = parseInt(
@@ -64,14 +64,14 @@ userSchema.methods.changePassAfter = function (JWTTimestamp) {
     //ví dụ 8h đăng nhập thì nó lưu cái token là 8h đăng nhập
     //9h đổi pass, thì cái changeTimeStamp là 9h
     //client check JWTTimestamp < changeTimestamp (8h<9h) => đăng nhập lại
-    //10h đăng nhập check (10h<9h) => chưa đổi pass 
+    //10h đăng nhập check (10h<9h) => chưa đổi pass
   }
 };
 userSchema.methods.createPasswordResetToken = function (next) {
   //tạo cái token mới
   const resetToken = crypto.randomBytes(32).toString("hex");
   //token xác thực thay đổi passs
-  
+
   this.passwordResetToken = crypto
     .createHash("sha256")
     .update(resetToken)
