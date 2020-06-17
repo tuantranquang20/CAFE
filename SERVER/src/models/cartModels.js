@@ -3,12 +3,21 @@ const Product = require("./productModels");
 
 const cartSchema = new mongoose.Schema(
   {
-    product: {
+    idItem: {
       type: mongoose.Schema.ObjectId,
-      ref: "product",
+      ref : "product",
+      required: [true, "Phải thêm 1 sản phẩm"],
     },
     qty: Number,
     sumPrice: {
+      type: Number,
+      default: 0,
+    },
+    imgPath: {
+      type: String,
+      default: "img-default",
+    },
+    discount: {
       type: Number,
       default: 0,
     },
@@ -17,17 +26,15 @@ const cartSchema = new mongoose.Schema(
   {
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
-    versionKey: false
+    versionKey: false,
   }
 );
-
-cartSchema.pre(/^find/,function(next){
+cartSchema.pre(/^find/, function (next) {
   this.populate({
-    path: "product",
+    path: "idItem",
     select: "-__v",
   });
   next();
 });
-
 const Cart = mongoose.model("cart", cartSchema);
 module.exports = Cart;

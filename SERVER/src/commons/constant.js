@@ -9,7 +9,7 @@ module.exports = {
     INTERNAL_SERVER_ERROR: 500,
     UNAUTHORIZED: 403,
     MULTIPLE_CHOICES: 300,
-    FORBIDDEN: 403
+    FORBIDDEN: 403,
   },
   apiCode: {
     SUCCESS: { code: 1, message: "Thành công" },
@@ -33,20 +33,25 @@ module.exports = {
     PLACE_ERROR: { code: 17, message: "Không thể lấy được địa chỉ" },
     UPDATE_FAIL: { code: 18, message: "Cập nhật không thành công" },
     DATA_EXIST: { code: 19, message: "Dữ liệu đã tồn tại" },
+    DELETE_SUCCESS: { code: 20, message: "Xoá thành công" },
   },
-
+  statusOrder: {
+    WATTING_CONFIRM: 1,
+    PAYED: 2,
+    CANCEL: 0,
+  },
   firebase: {
-    ACCOUNT: ""
+    ACCOUNT: "",
   },
   debug: {
     db: debug("app:dbquery"),
     log: debug("app:log"),
     debug: debug("app:debug"),
     error: debug("app:error"),
-    email: debug("app:email")
+    email: debug("app:email"),
   },
   role: {
-    CUSTOMER: 11
+    CUSTOMER: 11,
   },
-  GOOGLE_API_KEY: 'AIzaSyDMw3EgsWHTOExuSV2xzt2xGSKGHR9VZMQ'
+  GOOGLE_API_KEY: "AIzaSyDMw3EgsWHTOExuSV2xzt2xGSKGHR9VZMQ",
 };

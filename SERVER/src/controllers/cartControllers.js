@@ -11,19 +11,37 @@ exports.createOrder = async (req, res, next) => {
   }
 };
 exports.getAllCart = async (req, res, next) => {
+  let total = 0;
   try {
     const result = await Cart.find();
-    res.json({
-      status: 1,
-      code: 1,
-      msg: "Thành công",
-      data: {
-        totalPrice: 0,
-        item: result,
-      },
+    result.map((el) => {
+      total += el.sumPrice;
+      return total;
     });
+    res.json(
+      response.success(
+        {
+          data: {
+            totalPrice: total,
+            item: result,
+          },
+        },
+        apiCode.SUCCESS.message
+      )
+    );
   } catch (error) {
-      console.log(error);
+    console.log(error);
+    res.json(response.error(error, apiCode.DB_ERROR.message));
+  }
+};
+exports.deleteItem = async (req, res, next) => {
+  // console.log(req.body.item);
+  try {
+    const result = await Cart.remove(
+      { _id: req.body.item }
+    );
+    res.json(response.success(result, apiCode.DELETE_SUCCESS.message));
+  } catch (error) {
     res.json(response.error(error, apiCode.DB_ERROR.message));
   }
 };
