@@ -11,3 +11,20 @@ exports.newRequestBody = (payload) => {
   });
   return result;
 };
+
+exports.checkToken = (req) => {
+  //kiểm tra xem có token
+  let token;
+  if (req.headers.authorization) {
+    token = req.headers.authorization.split(" ")[1];
+  }
+
+  //nếu k có token ?
+  if (!token) {
+    return res.json({
+      status: 0,
+      message: "Đăng nhập lại, lỗi token !",
+    });
+  }
+  return token;
+};

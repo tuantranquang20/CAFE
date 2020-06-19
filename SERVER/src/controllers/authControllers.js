@@ -4,6 +4,9 @@ const User = require("./../models/userModels");
 const sendEmail = require("./../ultils/email");
 //thư viện dịch token
 const { promisify } = require("util");
+const response = require("./../commons/response");
+const { apiCode } = require("./../commons/constant");
+const { checkToken } = require("./../ultils/featureHelper");
 
 const signToken = (id) => {
   return jwt.sign({ id }, "secret", {
@@ -55,19 +58,7 @@ exports.protected = async (req, res, next) => {
   // console.log("cứ vào đây làm lz gì");
   // console.log(req.baseUrl , "cái đ gì vậy");
   try {
-    let token;
-    //kiểm tra xem có token
-    if (req.headers.authorization) {
-      token = req.headers.authorization.split(" ")[1];
-    }
-
-    //nếu k có token ?
-    if (!token) {
-      return res.json({
-        status: 0,
-        message: "Đăng nhập lại, lỗi token !",
-      });
-    }
+    const token = checkToken(req);
     //dịch cái token đấy
     const decoded = await promisify(jwt.verify)(token, "secret");
     //tìm trong db
@@ -82,7 +73,7 @@ exports.protected = async (req, res, next) => {
     //rồi tìm xem cái pass của nó đã bị thay đổi chưa
     const changePass = checkUser.changePassAfter(decoded.iat);
     if (changePass) {
-      res.json({
+      return res.json({
         status: 0,
         message: "Đăng nhập lại, password đã bị thay đổi !",
       });
@@ -110,8 +101,6 @@ exports.forgotPassword = async (req, res, next) => {
       message: "Không tìm thất email!",
     });
   }
-  //???
-  // console.log(user, "d hiểu sao???");
   //tạo 1 cái token mới, token này để reset token cũ
   const resetToken = user.createPasswordResetToken();
   //cái này là để lưu lại cái this. bên kia
@@ -190,7 +179,38 @@ exports.resetPassword = async (req, res, next) => {
     });
   }
 };
-
+exports.changePassword = async (req, res, next) => {
+  const { password, passwordConfirm } = req.body;
+  try {
+    //check user
+    const token = checkToken(req);
+    const decoded = await promisify(jwt.verify)(token, "secret");
+    const checkUser = await User.findById(decoded.id);
+    if (!checkUser) {
+      return res.json(
+        response.error(
+          { message: apiCode.NOT_ACCOUNT_EXIST.message },
+          apiCode.NOT_ACCOUNT_EXIST.message
+        )
+      );
+    }
+    if (!password || !passwordConfirm) {
+      return res.json(
+        response.error(
+          { message: apiCode.PASSWORD_ERROR.message },
+          apiCode.PASSWORD_ERROR.message
+        )
+      );
+    }
+    checkUser.password = password;
+    checkUser.passwordConfirm = passwordConfirm;
+    await checkUser.save({ validateBeforeSave: false });
+    res.json(response.success("", apiCode.SUCCESS.message));
+  } catch (error) {
+    console.log(error);
+    res.json(response.error(error, apiCode.DB_ERROR.message));
+  }
+};
 exports.checkRole = (req, res, next) => {
   const roles = ["admin", "lead-guide", "guide"];
   const roleUser = roles.includes(req.user.role);

@@ -34,6 +34,7 @@ module.exports = {
     UPDATE_FAIL: { code: 18, message: "Cập nhật không thành công" },
     DATA_EXIST: { code: 19, message: "Dữ liệu đã tồn tại" },
     DELETE_SUCCESS: { code: 20, message: "Xoá thành công" },
+    PASSWORD_ERROR : {  code : 0, message : "Mật khẩu không đúng hoặc không hợp lệ!"}
   },
   statusOrder: {
     WATTING_CONFIRM: 1,
