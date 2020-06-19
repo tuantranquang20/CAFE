@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
-const Product = require("./productModels");
-
+const { REF } = require("./../commons/constant");
 const cartSchema = new mongoose.Schema(
   {
     idItem: {
@@ -36,5 +35,5 @@ cartSchema.pre(/^find/, function (next) {
   });
   next();
 });
-const Cart = mongoose.model("cart", cartSchema);
+const Cart = mongoose.model(REF.CART, cartSchema);
 module.exports = Cart;

@@ -4,7 +4,7 @@ module.exports = {
   error: function (error, message = null) {
     return {
       status: 0,
-      code: error.code,
+      // code: error.code,
       msg: message || error.message,
       // data: {}
     };

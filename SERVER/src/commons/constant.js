@@ -40,9 +40,6 @@ module.exports = {
     PAYED: 2,
     CANCEL: 0,
   },
-  firebase: {
-    ACCOUNT: "",
-  },
   debug: {
     db: debug("app:dbquery"),
     log: debug("app:log"),
@@ -50,8 +47,11 @@ module.exports = {
     error: debug("app:error"),
     email: debug("app:email"),
   },
-  role: {
-    CUSTOMER: 11,
-  },
-  GOOGLE_API_KEY: "AIzaSyDMw3EgsWHTOExuSV2xzt2xGSKGHR9VZMQ",
+  REF : {
+    USER : "user",
+    ORDER : "order",
+    CART : "cart",
+    PRODUCT : "product",
+    REVIEW : "review"
+  }
 };

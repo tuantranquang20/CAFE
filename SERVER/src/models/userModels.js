@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
 const crypto = require("crypto");
-
+const { REF } = require("./../commons/constant");
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -83,5 +83,5 @@ userSchema.methods.createPasswordResetToken = function (next) {
 
   return resetToken;
 };
-const User = mongoose.model("user", userSchema);
+const User = mongoose.model(REF.USER, userSchema);
 module.exports = User;

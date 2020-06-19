@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { REF } = require("./../commons/constant");
 
 const productSchema = new mongoose.Schema({
   idProduct: {
@@ -35,11 +36,12 @@ const productSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  review: String,
   active: {
     type: Boolean,
     default: true,
   },
 });
 
-const Product = mongoose.model("product", productSchema);
+const Product = mongoose.model(REF.PRODUCT, productSchema);
 module.exports = Product;

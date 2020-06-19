@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
-const Product = require("./productModels");
-const { statusOrder } = require("./../commons/constant");
+const { statusOrder, REF } = require("./../commons/constant");
 
 const orderSchema = new mongoose.Schema(
   {
@@ -8,7 +7,7 @@ const orderSchema = new mongoose.Schema(
       {
         idItem: {
           type: mongoose.Schema.ObjectId,
-          ref: "product",
+          ref: REF.PRODUCT,
         },
         qty: Number,
         description: String,
@@ -53,5 +52,12 @@ orderSchema.pre(/^find/, function (next) {
   });
   next();
 });
-const Order = mongoose.model("order", orderSchema);
+
+orderSchema.methods.statusOrder = function (payload) {
+  if(payload.status == 2){
+    return true
+  }
+  return false
+};
+const Order = mongoose.model(REF.ORDER, orderSchema);
 module.exports = Order;
