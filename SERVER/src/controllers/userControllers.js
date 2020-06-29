@@ -1,13 +1,15 @@
 const multer = require("multer");
 const sharp = require("sharp");
 const User = require("./../models/userModels");
+const { getTokenUser } = require("./../ultils/featureHelper");
 exports.getMe = (req, res, next) => {
   req.params.id = req.user.id;
   next();
 };
-exports.getAllUsers = async (req, res, next) => {
+exports.getUserInfo = async (req, res, next) => {
   try {
-    const result = await User.find();
+    const token = await getTokenUser(req);
+    const result = await User.findById(token);
     res.json({
       status: 1,
       message: "Thành công",
@@ -111,13 +113,13 @@ exports.updateUser = async (req, res, next) => {
     );
     res.json({
       status: 1,
-      message: R.updateUserSuccess,
+      message: "Update thành công",
       data: result,
     });
   } catch (error) {
     res.json({
       status: 0,
-      message: R.updateUserFail,
+      message: "Update lỗi",
     });
   }
 };

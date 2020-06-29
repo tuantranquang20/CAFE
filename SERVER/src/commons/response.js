@@ -5,8 +5,8 @@ module.exports = {
     return {
       status: 0,
       // code: error.code,
-      msg: message || error.message,
-      // data: {}
+      msg:  error.message,
+      message
     };
   },
   success: function (data, message, ) {

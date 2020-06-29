@@ -34,7 +34,10 @@ module.exports = {
     UPDATE_FAIL: { code: 18, message: "Cập nhật không thành công" },
     DATA_EXIST: { code: 19, message: "Dữ liệu đã tồn tại" },
     DELETE_SUCCESS: { code: 20, message: "Xoá thành công" },
-    PASSWORD_ERROR : {  code : 0, message : "Mật khẩu không đúng hoặc không hợp lệ!"}
+    PASSWORD_ERROR : {  code : 0, message : "Mật khẩu không đúng hoặc không hợp lệ!"},
+    NOT_FOUND : {  code : 21, message : "Không tìm thấy sản phẩm hoặc sản phẩm đã bị xoá!"},
+    UPDATE_SUCESSS : { code : 22 , message : "Chỉnh sửa thành công"}
+
   },
   statusOrder: {
     WATTING_CONFIRM: 1,

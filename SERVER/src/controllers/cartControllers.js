@@ -34,12 +34,21 @@ exports.getAllCart = async (req, res, next) => {
     res.json(response.error(error, apiCode.DB_ERROR.message));
   }
 };
+
+exports.updateCart = async (req, res, next) => {
+  const { qty, sumPrice, idItem } = req.body;
+  console.log(req.body);
+  try {
+    const result = await Cart.findByIdAndUpdate(idItem, { qty, sumPrice });
+    res.json(response.success(result, apiCode.SUCCESS.message));
+  } catch (error) {
+    res.json(response.error(error, apiCode.DB_ERROR.message));
+  }
+};
 exports.deleteItem = async (req, res, next) => {
   // console.log(req.body.item);
   try {
-    const result = await Cart.remove(
-      { _id: req.body.item }
-    );
+    const result = await Cart.remove({ _id: req.body.item });
     res.json(response.success(result, apiCode.DELETE_SUCCESS.message));
   } catch (error) {
     res.json(response.error(error, apiCode.DB_ERROR.message));

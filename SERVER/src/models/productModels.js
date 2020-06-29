@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { REF } = require("./../commons/constant");
+const arr = ["DK", "FD"];
 
 const productSchema = new mongoose.Schema({
   idProduct: {
@@ -10,6 +11,12 @@ const productSchema = new mongoose.Schema({
   idBranch: {
     type: String,
     required: [true, "phải nhập mã ngành hàng"],
+    validate: {
+      validator: function (el) {
+        return arr.includes(el);
+      },
+      message: "Nhập đúng mã ngành hàng",
+    },
   },
   name: {
     type: String,

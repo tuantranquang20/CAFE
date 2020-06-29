@@ -6,6 +6,7 @@ router
   .route("/")
   .post(cartControllers.createOrder)
   .get(cartControllers.getAllCart)
+  .patch(cartControllers.updateCart)
   .delete(cartControllers.deleteItem)
 
 module.exports = router;
