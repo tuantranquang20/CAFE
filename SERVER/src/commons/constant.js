@@ -34,14 +34,20 @@ module.exports = {
     UPDATE_FAIL: { code: 18, message: "Cập nhật không thành công" },
     DATA_EXIST: { code: 19, message: "Dữ liệu đã tồn tại" },
     DELETE_SUCCESS: { code: 20, message: "Xoá thành công" },
-    PASSWORD_ERROR : {  code : 0, message : "Mật khẩu không đúng hoặc không hợp lệ!"},
-    NOT_FOUND : {  code : 21, message : "Không tìm thấy sản phẩm hoặc sản phẩm đã bị xoá!"},
-    UPDATE_SUCESSS : { code : 22 , message : "Chỉnh sửa thành công"}
-
+    PASSWORD_ERROR: {
+      code: 0,
+      message: "Mật khẩu không đúng hoặc không hợp lệ!",
+    },
+    NOT_FOUND: {
+      code: 21,
+      message: "Không tìm thấy sản phẩm hoặc sản phẩm đã bị xoá!",
+    },
+    UPDATE_SUCESSS: { code: 22, message: "Chỉnh sửa thành công" },
   },
   statusOrder: {
     WATTING_CONFIRM: 1,
-    PAYED: 2,
+    CONFIRM: 2,
+    PAYED: 3,
     CANCEL: 0,
   },
   debug: {
@@ -51,11 +57,15 @@ module.exports = {
     error: debug("app:error"),
     email: debug("app:email"),
   },
-  REF : {
-    USER : "user",
-    ORDER : "order",
-    CART : "cart",
-    PRODUCT : "product",
-    REVIEW : "review"
-  }
+  REF: {
+    USER: "user",
+    ORDER: "order",
+    CART: "cart",
+    PRODUCT: "product",
+    REVIEW: "review",
+  },
+  roles: {
+    ADMIN: "admin",
+    USER: "user",
+  },
 };

@@ -7,6 +7,7 @@ router.post("/login", authController.login);
 router.post("/forgotPassword", authController.forgotPassword);
 router.patch("/resetPassword/:token", authController.resetPassword);
 router.patch("/changePassword/", authController.changePassword);
+router.post("/", userControllers.createUser);
 
 router.use(authController.protected);
 router
@@ -17,7 +18,6 @@ router
     userControllers.getMe,
     userControllers.updateUser
   ); //userControllers.getMe,  userControllers.updateUser
-router.post("/", userControllers.createUser);
 //tạo middle ware check role
 // router.use(authController.protected, authController.checkRole);
 router.route("/").get(userControllers.getUserInfo);

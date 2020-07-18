@@ -11,6 +11,7 @@ router
   .route("/")
   .get(orderControllers.getAllOrder)
   .post(orderControllers.createOrder)
+  .patch(orderControllers.updateOrder)
   // .patch(orderControllers)
 
 module.exports = router;

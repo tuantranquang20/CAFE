@@ -46,7 +46,6 @@ exports.updateCart = async (req, res, next) => {
   }
 };
 exports.deleteItem = async (req, res, next) => {
-  // console.log(req.body.item);
   try {
     const result = await Cart.remove({ _id: req.body.item });
     res.json(response.success(result, apiCode.DELETE_SUCCESS.message));

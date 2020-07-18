@@ -222,3 +222,12 @@ exports.checkRole = (req, res, next) => {
     message: "Không đủ thẩm quyền b !",
   });
 };
+//get role
+// exports.getRole = async (req, res, next) => {
+//   try {
+
+//     res.json(response.success(result, apiCode.SUCCESS.message));
+//   } catch (error) {
+//     res.json(response.error(error, apiCode.DB_ERROR.message));
+//   }
+// };

@@ -25,6 +25,7 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: [true, "Bạn phải nhập mật khẩu !"],
+    select: false,
   },
   passwordConfirm: {
     type: String,
