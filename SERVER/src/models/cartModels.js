@@ -4,8 +4,13 @@ const cartSchema = new mongoose.Schema(
   {
     idItem: {
       type: mongoose.Schema.ObjectId,
-      ref : "product",
+      ref: "product",
       required: [true, "Phải thêm 1 sản phẩm"],
+    },
+    idUser: {
+      type: mongoose.Schema.ObjectId,
+      ref: REF.USER,
+      required: [true, "Phải từ 1 người nào đó"],
     },
     qty: Number,
     sumPrice: {

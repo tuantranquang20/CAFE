@@ -50,7 +50,7 @@ const multerFilter = (req, file, cb) => {
   } else {
     res.json({
       status: 0,
-      message: R.failGetImage,
+      message: "Không thấy định dạng ảnh!",
     });
   }
 };
@@ -69,16 +69,16 @@ exports.resizeUserPhoto = async (req, res, next) => {
     req.file.filename = `user-${req.user._id}-${Date.now()}.jpeg`;
     //bắt đầu resize và lưu vào public/img/users/ với tên là filename
     await sharp(req.file.buffer)
-      .resize(500, 500)
+      .resize(1000, 1000)
       .toFormat("jpeg")
-      .jpeg({ quality: 90 })
+      .jpeg({ quality: 100 })
       .toFile(`public/images/users/${req.file.filename}`);
     next();
   } catch (error) {
     console.log(error);
     res.json({
       status: 0,
-      message: R.failResizeImage,
+      message: "Không thể resize ảnh",
       error: error,
     });
   }

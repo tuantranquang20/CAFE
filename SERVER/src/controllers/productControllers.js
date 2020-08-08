@@ -1,7 +1,6 @@
 const Product = require("./../models/productModels");
 const response = require("./../commons/response");
 const { apiCode } = require("./../commons/constant");
-const { findByIdAndDelete } = require("./../models/productModels");
 exports.getQuery = (req, res, next) => {
   const { id } = req.query;
   req.id = id;
@@ -61,7 +60,7 @@ exports.createProduct = async (req, res, next) => {
 exports.updateProduct = async (req, res, next) => {
   const { idItem } = req.query;
   try {
-    const result = await Product.findByIdAndUpdate(idItem, req.body);
+    await Product.findByIdAndUpdate(idItem, req.body);
     res.json(
       response.success(apiCode.UPDATE_SUCESSS.message, apiCode.SUCCESS.message)
     );

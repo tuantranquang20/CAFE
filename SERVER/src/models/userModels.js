@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const validator = require("validator");
 const crypto = require("crypto");
 const { REF } = require("./../commons/constant");
+const bcrypt = require("bcryptjs");
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -12,6 +13,16 @@ const userSchema = new mongoose.Schema({
     required: [true, "Bạn phải nhập email !"],
     unique: true,
     validate: [validator.isEmail, "Nhập đúng định dạng email !"],
+  },
+  phone: {
+    type: String,
+    required: [true, "Bạn phải nhập số điện thoại !"],
+    validate: {
+      validator: function (el) {
+        return /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/.test(el);
+      },
+      message: "Nhập đúng định dạng",
+    },
   },
   photo: {
     type: String,
@@ -37,6 +48,11 @@ const userSchema = new mongoose.Schema({
       message: "Xác nhận mật khẩu lỗi !",
     },
   },
+  gender: {
+    type: Number,
+    enum: [0, 1],
+    default: null,
+  },
   passwordChangedAt: Date,
   passwordResetToken: String,
   passwordResetExpires: Date,
@@ -46,14 +62,28 @@ const userSchema = new mongoose.Schema({
     select: false,
   },
 });
-
+//hash pass
+userSchema.pre("save", async function (next) {
+  //nếu k bị thay đổi thì cho chạy
+  if (!this.isModified("password")) return next();
+  this.password = await bcrypt.hash(this.password, 12);
+  //del password confirm
+  this.passwordConfirm = undefined;
+  next();
+});
+//hash password khi đăng nhập
+userSchema.methods.correctPassword = async function (
+  candidatePassword,
+  userPassword
+) {
+  return await bcrypt.compare(candidatePassword, userPassword);
+};
 userSchema.pre("save", function (next) {
   if (!this.isModified("password") || this.isNew) return next();
   this.passwordChangedAt = Date.now() - 1000;
   next();
 });
 userSchema.methods.changePassAfter = function (JWTTimestamp) {
-  // console.log(JWTTimestamp, "vcl b");
   // console.log(this.passwordChangedAt.getTime() / 1000, "get nó ra b");
   if (this.passwordChangedAt) {
     //nếu mà đã thay đổi thì

@@ -13,6 +13,11 @@ const orderSchema = new mongoose.Schema(
         description: String,
       },
     ],
+    idUser: {
+      type: mongoose.Schema.ObjectId,
+      ref: REF.USER,
+      required: [true, "Phải từ 1 người nào đó"],
+    },
     name: {
       type: String,
       required: [true, "Bạn phải nhập tên người mua!"],
@@ -54,10 +59,10 @@ orderSchema.pre(/^find/, function (next) {
 });
 
 orderSchema.methods.statusOrder = function (payload) {
-  if(payload.status == 2){
-    return true
+  if (payload.status == 2) {
+    return true;
   }
-  return false
+  return false;
 };
 const Order = mongoose.model(REF.ORDER, orderSchema);
 module.exports = Order;

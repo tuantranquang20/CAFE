@@ -1,6 +1,8 @@
 const jwt = require("jsonwebtoken");
 //thư viện dịch token
 const { promisify } = require("util");
+const User = require("../models/userModels");
+const { apiCode } = require("./../commons/constant");
 
 exports.newRequestBody = (payload) => {
   const result = payload.map((el) => {
@@ -47,4 +49,21 @@ exports.getTokenUser = async (req) => {
   }
   const decoded = await promisify(jwt.verify)(token, "secret");
   return decoded.id;
+};
+exports.checkUser = async (req) => {
+  try {
+    const token = this.checkToken(req);
+    //decode để lấy id user
+    const idUser = await promisify(jwt.verify)(token, "secret");
+    const user = await User.findById(idUser.id);
+    if (!user) {
+      res.json(
+        response.error(apiCode.NOT_FOUND_REQUEST, apiCode.DB_ERROR.message)
+      );
+    } else {
+      return user;
+    }
+  } catch (error) {
+    res.json(response.error(error, apiCode.DB_ERROR.message));
+  }
 };

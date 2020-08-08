@@ -41,22 +41,21 @@ exports.login = async (req, res, next) => {
         message: "Nhập email và password !",
       });
     }
-    const user = await User.findOne(req.body);
-    if (!user) {
+    const user = await User.findOne({ email }).select("+password");
+    if (!user || !(await user.correctPassword(password, user.password))) {
       return res.json({
         status: 0,
         message: "Nhập email hoặc password không đúng !",
       });
     }
     // Tim dc tài khoản đó thì bắn cho nó 1 cái token
-    // req.user = user;
+    req.users = user;
+    console.log(req.user);
     createSendToken(user, req, res);
   } catch (error) {}
 };
 
 exports.protected = async (req, res, next) => {
-  // console.log("cứ vào đây làm lz gì");
-  // console.log(req.baseUrl , "cái đ gì vậy");
   try {
     const token = checkToken(req);
     //dịch cái token đấy
@@ -222,12 +221,3 @@ exports.checkRole = (req, res, next) => {
     message: "Không đủ thẩm quyền b !",
   });
 };
-//get role
-// exports.getRole = async (req, res, next) => {
-//   try {
-
-//     res.json(response.success(result, apiCode.SUCCESS.message));
-//   } catch (error) {
-//     res.json(response.error(error, apiCode.DB_ERROR.message));
-//   }
-// };

@@ -43,6 +43,10 @@ module.exports = {
       message: "Không tìm thấy sản phẩm hoặc sản phẩm đã bị xoá!",
     },
     UPDATE_SUCESSS: { code: 22, message: "Chỉnh sửa thành công" },
+    NOT_FOUND_REQUEST: {
+      code: 23,
+      message: "Không tìm thấy yêu cầu!",
+    },
   },
   statusOrder: {
     WATTING_CONFIRM: 1,
