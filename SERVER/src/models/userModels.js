@@ -16,6 +16,7 @@ const userSchema = new mongoose.Schema({
   },
   phone: {
     type: String,
+    unique: true,
     required: [true, "Bạn phải nhập số điện thoại !"],
     validate: {
       validator: function (el) {
@@ -47,6 +48,7 @@ const userSchema = new mongoose.Schema({
       },
       message: "Xác nhận mật khẩu lỗi !",
     },
+    select: false,
   },
   gender: {
     type: Number,
@@ -67,9 +69,9 @@ userSchema.pre("save", async function (next) {
   //nếu k bị thay đổi thì cho chạy
   if (!this.isModified("password")) return next();
   this.password = await bcrypt.hash(this.password, 12);
-  //del password confirm
-  this.passwordConfirm = undefined;
-  next();
+  //del password confirm ? k xoá dc
+  this.passwordConfirm = await bcrypt.hash(this.passwordConfirm, 12);
+  return next();
 });
 //hash password khi đăng nhập
 userSchema.methods.correctPassword = async function (

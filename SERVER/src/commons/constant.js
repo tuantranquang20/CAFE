@@ -67,6 +67,7 @@ module.exports = {
     CART: "cart",
     PRODUCT: "product",
     REVIEW: "review",
+    STORE: "store",
   },
   roles: {
     ADMIN: "admin",

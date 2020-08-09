@@ -15,24 +15,29 @@ exports.createOrder = async (req, res, next) => {
       );
     }
     const resultProduct = await Cart.find();
-    //tìm cái el.idItem._id === idItem
-    const resultItem = resultProduct.find((el) => el.idItem._id == idItem);
+    //tìm cái el.idItem._id === idItem // el.idItem._id == idItem &&
+    //tìm tẩt cả cart của thg đấy rồi update nó lên //el.idUser == user._id
+    const resultItem = resultProduct.filter(
+      (el) => `${el.idUser}` === `${user._id}`
+    );
     if (resultItem) {
-      const { _id, qty, idItem } = resultItem;
-      const { price } = idItem;
-      const qtyUpdate = qty + 1;
-      //chỉ update + cái qty lên 1 và sumPrice = tổng sp * giá
-      const resultUpdateCart = await Cart.findOneAndUpdate(
-        { _id },
-        {
-          qty: qtyUpdate,
-          sumPrice: qtyUpdate * price,
-          description,
-        }
-      );
-      return res.json(
-        response.success(resultUpdateCart, apiCode.UPDATE_SUCESSS.message)
-      );
+      const item = resultItem.find((el) => `${el.idItem._id}` === `${idItem}`);
+      if (item) {
+        const { _id, qty } = item;
+        const qtyUpdate = qty + 1;
+        //chỉ update + cái qty lên 1 và sumPrice = tổng sp * giá
+        const resultUpdateCart = await Cart.findOneAndUpdate(
+          { _id },
+          {
+            qty: qtyUpdate,
+            sumPrice: qtyUpdate * item.idItem.price,
+            description,
+          }
+        );
+        return res.json(
+          response.success(resultUpdateCart, apiCode.UPDATE_SUCESSS.message)
+        );
+      }
     }
     const result = await Cart.create(
       Object.assign(req.body, { idUser: user._id })
@@ -45,7 +50,14 @@ exports.createOrder = async (req, res, next) => {
 exports.getAllCart = async (req, res, next) => {
   let total = 0;
   try {
-    const result = await Cart.find();
+    const user = await checkUser(req);
+    if (!user) {
+      return response.error(
+        apiCode.NOT_FOUND_REQUEST,
+        apiCode.NOT_FOUND.message
+      );
+    }
+    const result = await Cart.find({ idUser: user._id });
     result.map((el) => {
       total += el.sumPrice;
       return total;
@@ -62,7 +74,6 @@ exports.getAllCart = async (req, res, next) => {
       )
     );
   } catch (error) {
-    console.log(error);
     res.json(response.error(error, apiCode.DB_ERROR.message));
   }
 };
