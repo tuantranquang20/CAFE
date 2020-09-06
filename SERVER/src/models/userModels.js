@@ -44,7 +44,7 @@ const userSchema = new mongoose.Schema({
     required: [true, "Bạn phải nhập xác nhận mật khẩu !"],
     validate: {
       validator: function (el) {
-        return el === this.password;
+        return el === this.password; //bị lỗi không thể xác nhận password
       },
       message: "Xác nhận mật khẩu lỗi !",
     },

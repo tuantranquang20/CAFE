@@ -12,6 +12,9 @@ const cartRouter = require("./src/routes/cart");
 const orderRouter = require("./src/routes/order");
 const paymentRouter = require("./src/routes/payment");
 const storeRouter = require("./src/routes/store");
+const moviesRouter = require("./src/routes/movies");
+const cinemaRouter = require("./src/routes/cinema");
+const roomRouter = require("./src/routes/room");
 
 require("./src/configs/db");
 
@@ -46,6 +49,9 @@ app.use("/cart", cartRouter);
 app.use("/order", orderRouter);
 app.use("/payment", paymentRouter);
 app.use("/store", storeRouter);
+app.use("/movie", moviesRouter);
+app.use("/cinema", cinemaRouter);
+app.use("/room", roomRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
