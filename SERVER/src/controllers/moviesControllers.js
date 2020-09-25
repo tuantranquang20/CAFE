@@ -1,7 +1,7 @@
 const Movie = require("./../models/moviesModels");
 const response = require("./../commons/response");
 const { apiCode } = require("./../commons/constant");
-
+const { filterObj } = require("../ultils/featureHelper");
 exports.getMovies = async (req, res, next) => {
   try {
     //có thể filer nhiều chỗ này

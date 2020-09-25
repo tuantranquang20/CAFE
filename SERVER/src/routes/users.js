@@ -27,3 +27,4 @@ router
   .post(userControllers.findUser)
   .delete(userControllers.deleteUser);
 module.exports = router;
+//đầu tiên phải gọi đến hàm upload, sau đó resize, resize xong có path thì mới update dc 

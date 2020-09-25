@@ -67,3 +67,16 @@ exports.checkUser = async (req) => {
     res.json(response.error(error, apiCode.DB_ERROR.message));
   }
 };
+
+exports.filterObj = (obj, ...allowedFields) => {
+  const newObj = {};
+  Object.keys(obj).forEach((el) => {
+    //lấy các keys của req.body truyền vào
+    if (allowedFields.includes(el)) {
+      //lọc chỉ nhận những giá trị trong obj = allowedFields
+      //sau đó lưu lại cái newObj[tại cái phần tử giống] = obj[tại cái phần tử giống đó]
+      newObj[el] = obj[el];
+    }
+  });
+  return newObj;
+};

@@ -15,6 +15,8 @@ const storeRouter = require("./src/routes/store");
 const moviesRouter = require("./src/routes/movies");
 const cinemaRouter = require("./src/routes/cinema");
 const roomRouter = require("./src/routes/room");
+const homeRouter = require("./src/routes/home");
+const notificationRouter = require("./src/routes/notification");
 
 require("./src/configs/db");
 
@@ -52,6 +54,8 @@ app.use("/store", storeRouter);
 app.use("/movie", moviesRouter);
 app.use("/cinema", cinemaRouter);
 app.use("/room", roomRouter);
+app.use("/home", homeRouter);
+app.use("/notification", notificationRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

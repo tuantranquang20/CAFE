@@ -45,6 +45,7 @@ const multerFilter = (req, file, cb) => {
   if (file.mimetype.startsWith("image")) {
     //nếu bắt đầu định dạng file đúng là image
     //thì gọi đến cb
+    console.log(file);
     cb(null, true);
     //cb này tự next();
   } else {
@@ -105,7 +106,6 @@ exports.updateUser = async (req, res, next) => {
   if (req.file) {
     filteredBody.photo = req.file.filename;
   }
-  console.log(filteredBody);
   try {
     const result = await User.findOneAndUpdate(
       { _id: req.params.id },

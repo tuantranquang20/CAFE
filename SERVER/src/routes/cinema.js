@@ -6,5 +6,6 @@ router
   .route("/")
   .get(cinemaControllers.getCinema)
   .post(cinemaControllers.createCinema);
+  //delete
 
 module.exports = router;

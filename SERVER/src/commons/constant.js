@@ -70,7 +70,8 @@ module.exports = {
     STORE: "store",
     MOVIE: "movie",
     CINEMA : "cinema",
-    ROOM : "room"
+    ROOM : "room",
+    NOTIFICATION : "notification"
   },
   roles: {
     ADMIN: "admin",
