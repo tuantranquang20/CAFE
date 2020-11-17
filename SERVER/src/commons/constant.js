@@ -69,9 +69,11 @@ module.exports = {
     REVIEW: "review",
     STORE: "store",
     MOVIE: "movie",
-    CINEMA : "cinema",
-    ROOM : "room",
-    NOTIFICATION : "notification"
+    CINEMA: "cinema",
+    ROOM: "room",
+    NOTIFICATION: "notification",
+    ORDER_BOOKING: "orderBooking",
+    SEAT_BOOKED : "seatBooked"
   },
   roles: {
     ADMIN: "admin",

@@ -4,6 +4,8 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const logger = require("morgan");
+const io = require("socket.io")();
+const handleMessage = require("./src/ultils/message");
 
 const indexRouter = require("./src/routes/index");
 const usersRouter = require("./src/routes/users");
@@ -17,10 +19,14 @@ const cinemaRouter = require("./src/routes/cinema");
 const roomRouter = require("./src/routes/room");
 const homeRouter = require("./src/routes/home");
 const notificationRouter = require("./src/routes/notification");
+const chatRouter = require("./src/routes/chat");
+const orderBookingRouter = require("./src/routes/orderBooking");
+const seatBookedRouter = require("./src/routes/seatBooked");
 
 require("./src/configs/db");
 
 const app = express();
+// app.enable("trust proxy");
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -44,6 +50,15 @@ app.use((req, res, next) => {
 
   next();
 });
+
+// app.use(function (request, response, next) {
+//   if (process.env.NODE_ENV != "development" && !request.secure) {
+//     return response.redirect("https://" + request.headers.host + request.url);
+//   }
+
+//   next();
+// });
+
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/product", productRouter);
@@ -56,6 +71,9 @@ app.use("/cinema", cinemaRouter);
 app.use("/room", roomRouter);
 app.use("/home", homeRouter);
 app.use("/notification", notificationRouter);
+app.use("/chat", chatRouter);
+app.use("/orderBooking", orderBookingRouter);
+app.use("/seatBooked", seatBookedRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -71,5 +89,30 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render("error");
 });
+
+//socket
+
+// const user = {};
+// let currentUserId = 2;
+
+// io.on("connection", (socket) => {
+//   user[socket.id] = { userId: currentUserId++ };
+//   socket.on("join", (username) => {
+//     user[socket.id].username = username;
+//     /* socket.id = {
+//     userId : 2,
+//     username : "acb"
+//   } */
+//     handleMessage(socket, user);
+//   });
+//   socket.on('action', (action) => {
+//     if(action.type === 'server/hello'){
+//       console.log('Got hello data!', action.data);
+//       socket.emit('action', {type:'message', data:'good day!'});
+//     }
+//   });
+// });
+
+// io.listen(3001);
 
 module.exports = app;

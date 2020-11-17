@@ -24,7 +24,7 @@ const createSendToken = (user, req, res) => {
   // Remove password from output
   user.password = undefined;
   res.json({
-    status: "success",
+    status: 1,
     token,
     data: {
       user,
@@ -33,24 +33,24 @@ const createSendToken = (user, req, res) => {
 };
 
 exports.login = async (req, res, next) => {
+  console.log(req, "android");
   try {
-    const { email, password } = req.body;
-    if (!email || !password) {
+    const { phone, password } = req.body;
+    if (!phone || !password) {
       res.json({
         status: 0,
-        message: "Nhập email và password !",
+        message: "Nhập phone và password !",
       });
     }
-    const user = await User.findOne({ email }).select("+password");
+    const user = await User.findOne({ phone }).select("+password");
     if (!user || !(await user.correctPassword(password, user.password))) {
       return res.json({
         status: 0,
-        message: "Nhập email hoặc password không đúng !",
+        message: "Nhập phone hoặc password không đúng !",
       });
     }
     // Tim dc tài khoản đó thì bắn cho nó 1 cái token
     req.users = user;
-    console.log(req.user);
     createSendToken(user, req, res);
   } catch (error) {}
 };

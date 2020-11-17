@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const { REF } = require("./../commons/constant");
-
+const moment = require("moment")
 const moviesSchema = new mongoose.Schema({
   active: {
     type: Boolean,
@@ -53,6 +53,11 @@ const moviesSchema = new mongoose.Schema({
       },
       message: "Ngày kết thúc không hợp lệ",
     },
+  },
+  showTime: {
+    type: mongoose.SchemaTypes.Mixed,
+    default: [],
+    required: [true, "Phải nhập thời gian chiếu"],
   },
   language: {
     type: String,

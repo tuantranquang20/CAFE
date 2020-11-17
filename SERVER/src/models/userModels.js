@@ -3,7 +3,10 @@ const validator = require("validator");
 const crypto = require("crypto");
 const { REF } = require("./../commons/constant");
 const bcrypt = require("bcryptjs");
+const autoIncrement = require("mongoose-auto-increment")
+
 const userSchema = new mongoose.Schema({
+  userID: {type: Number, default: 0, unique: true},
   name: {
     type: String,
     required: [true, "Bạn phải nhập tên !"],
@@ -116,5 +119,14 @@ userSchema.methods.createPasswordResetToken = function (next) {
 
   return resetToken;
 };
+autoIncrement.initialize(mongoose.connection); // This is important. You can remove initialization in different file
+userSchema.plugin(autoIncrement.plugin, {
+  model: 'userSchema',
+  field: 'userID',
+  startAt: 1,
+  incrementBy: 1
+});
+// userSchema.plugin(autoIncrement.plugin, 'User');
 const User = mongoose.model(REF.USER, userSchema);
 module.exports = User;
+

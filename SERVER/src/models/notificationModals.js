@@ -4,7 +4,7 @@ const { REF } = require("./../commons/constant");
 const notificationSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: [true, "Phải nhập tên rạp"],
+    required: [true, "Phải có tiêu đề"],
   },
   message: {
     type: String,

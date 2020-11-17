@@ -86,7 +86,6 @@ exports.updateOrder = async (req, res, next) => {
         return res.json(
           response.success(result, apiCode.UPDATE_SUCESSS.message)
         );
-        break;
       case roles.USER:
         if (status != 0) {
           return res.json(
