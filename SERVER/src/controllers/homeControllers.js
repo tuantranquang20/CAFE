@@ -29,28 +29,28 @@ exports.getHome = async (req, res, next) => {
 exports.getHomeAdmin = async (req, res, next) => {
   try {
     let monthDate = {
-      1: null,
-      2: null,
-      3: null,
-      4: null,
-      5: null,
-      6: null,
-      7: null,
-      8: null,
-      9: null,
-      10: null,
-      11: null,
-      12: null,
+      1: 0,
+      2: 0,
+      3: 0,
+      4: 0,
+      5: 0,
+      6: 0,
+      7: 0,
+      8: 0,
+      9: 0,
+      10: 0,
+      11: 0,
+      12: 0,
     };
     const yearNow = moment().format("YYYY");
-    //lặp qua 12 tháng, tìm tất cả đơn hàng có ngày bắt đầu là tháng đấy và ngày kết thúc là 
+    //lặp qua 12 tháng, tìm tất cả đơn hàng có ngày bắt đầu là tháng đấy và ngày kết thúc là
     //tháng đấy, sau đó lưu vào bên trên
     //nhược điểm là for 12 lần và tìm-chưa tìm ra thuật toán khác
     for (let i = 0; i < 12; i++) {
       const result = await OrderBooking.find({
         createAt: {
-          $gte: `2020-${i + 1 < 10 ? `0${i+1}` : `${i+1}`}-01`,
-          $lte: `2020-${i + 1 < 10 ? `0${i+1}` : `${i+1}`}-${moment(
+          $gte: `2020-${i + 1 < 10 ? `0${i + 1}` : `${i + 1}`}-01`,
+          $lte: `2020-${i + 1 < 10 ? `0${i + 1}` : `${i + 1}`}-${moment(
             `${yearNow}-${i + 1 < 10 ? `0${i + 1}` : `${i + 1}`}-01`
           )
             .endOf("month")
@@ -59,7 +59,7 @@ exports.getHomeAdmin = async (req, res, next) => {
       });
       result.length > 0 && (monthDate[i + 1] = result.length);
     }
-    //xử lý trả về doanh thu nữa 
+    //xử lý trả về doanh thu nữa
     res.json(response.success(monthDate, apiCode.SUCCESS.message));
   } catch (error) {
     res.json(response.error(error, apiCode.DB_ERROR.message));

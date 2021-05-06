@@ -33,7 +33,6 @@ const createSendToken = (user, req, res) => {
 };
 
 exports.login = async (req, res, next) => {
-  console.log(req, "android");
   try {
     const { phone, password } = req.body;
     if (!phone || !password) {

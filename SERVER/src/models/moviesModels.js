@@ -27,7 +27,7 @@ const moviesSchema = new mongoose.Schema({
   },
   typeMovies: {
     type: mongoose.SchemaTypes.Mixed,
-    enum: ["2D", "3D", "4d"],
+    enum: ["2D", "3D", "4D"],
     default: "2D",
   },
   directors: {

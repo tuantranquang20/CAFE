@@ -28,7 +28,7 @@ exports.createOrder = async (req, res, next) => {
     if (JSON.stringify(item) === "[]") {
       return res.json(
         response.error(apiCode.NOT_FOUND_REQUEST, apiCode.NOT_FOUND.message)
-      );
+        );
     }
     const reqBody = newRequestBody(item);
     const result = await Order.create({
@@ -54,8 +54,12 @@ exports.getAllOrder = async (req, res, next) => {
         apiCode.NOT_FOUND.message
       );
     }
-    const result = await Order.find({ idUser: user._id });
-    res.json(response.success(result, apiCode.SUCCESS.message));
+    const result = await Order.aggregate([
+      { $match: { status: { $gt: 1 } } },
+      // { $group: { _id: "$idUser" , total : { $sum : "$listOrder.idItem.price + listOder.qty" }}},
+      { $group: { _id: "$idUser" ,total : { $sum : 1 }}},
+    ]);
+    // res.json(response.success(result, apiCode.SUCCESS.message));
   } catch (error) {
     res.json(response.error(error, apiCode.DB_ERROR.message));
   }

@@ -14,7 +14,7 @@ module.exports = {
       status: 1,
       code: 1,
       // token,
-      result: data.length,
+      result: data.length || "",
       msg: message ||  "Thành công",
       data: data
     };

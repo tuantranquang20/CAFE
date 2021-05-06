@@ -57,6 +57,13 @@ orderSchema.pre(/^find/, function (next) {
   });
   next();
 });
+orderSchema.pre(/^aggregate/, function (next) {
+  this.populate({
+    path: "listOrder.idItem",
+    select: "-__v",
+  });
+  next();
+});
 
 orderSchema.methods.statusOrder = function (payload) {
   if (payload.status == 2) {
